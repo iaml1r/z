@@ -7,8 +7,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #eaeaea;
-      color: #222;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
       padding: 2rem;
     }
 
@@ -16,13 +16,15 @@
       text-align: center;
       font-size: 3rem;
       margin-bottom: 0.3rem;
+      color: #ffffff;
     }
 
     .tagline {
       text-align: center;
       font-weight: bold;
-      color: #333;
+      color: #bbbbbb;
       margin-bottom: 3rem;
+      letter-spacing: 1px;
     }
 
     section {
@@ -34,6 +36,7 @@
     .skills h2 {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
+      color: #f5f5f5;
     }
 
     .skills ul {
@@ -43,11 +46,13 @@
 
     .skills li {
       margin-bottom: 0.5rem;
+      color: #dcdcdc;
     }
 
     .projects h3 {
       margin-top: 2rem;
       margin-bottom: 1rem;
+      color: #f5f5f5;
     }
 
     .card-container {
@@ -57,13 +62,20 @@
     }
 
     .card {
-      background: white;
+      background: #2a2a2a;
       border-radius: 8px;
       padding: 1rem 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       flex: 1 1 200px;
       text-align: center;
       font-weight: 500;
+      color: #f0f0f0;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
