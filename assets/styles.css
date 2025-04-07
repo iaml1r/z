@@ -1,6 +1,18 @@
+
+html {
+  /* font-size: 1em; */
+}
+
+/* Apply font-size for mobile devices (screen width less than or equal to 768px) */
+@media (max-width: 768px) {
+  html {
+      font-size: 0.9em;
+  }
+}
 body {
     background-color: #1e1e1e;
     color: #f8f9fa;
+    
   }
   
   .card {

@@ -14,55 +14,22 @@
     <h1>L1R</h1>
     <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
 
-    <section class="mb-2">
-      <h4>Day 1 - April 4 - 2025</h4> 
-      <p class="">Android Apps</p>
-      <p  >Games</p>
-      <p  >Virtual Reality / Augmented Reality Applications</p>
-      <p  >Full-Stack Websites</p>
-      <p  >IoT stuff (Arduino, ESP32)</p>
-      <p  >AI stuff</p>
-    </section>
-
-    <a href="/z/300/" class="card p-3 text-center g-3 w-auto text-decoration-none">300 Progress</a>
-    <hr class="hr" />
-  
 
     <section class="mb-3">
-      <h3>Day 1 - 30</h3>
       <div class="row g-3 mt-0 p-2">
-        
-        <div class="col-md-4">
-          <div class="card p-3 text-start">
-            <b>Day 1 | April 4: 2025</b>
-            <hr>
-            <p>Created new site for L1R</p>
-            <p>Home Page</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 text-start">
-              <b>Day 1 | April 4: 2025</b>
-              <hr>
-              <p>Created new site for L1R</p>
-              <p>Home Page</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card p-3 text-start">
-              <b>Day 1 | April 4: 2025</b>
-              <hr>
-              <p>Created new site for L1R</p>
-              <p>Home Page</p>
-            </div>
-          </div>
+        <b onclick="window.location.href='../';" type="button" class="card  m-1 p-2 text-center g-3 w-auto " >🏠 Home</b>
+        <b onclick="window.location.href='300';" type="button" class="card  m-1 p-2 text-center g-3 w-auto " >💪 Progress</b>
+
+      
       </div>
     </section>
+    <hr class="hr" />
+
     <section class="mb-3">
         <h3>Day Range</h3>
         
         <!-- Slider for selecting the day range -->
-        <input type="range" id="dayRange" min="30" max="300" step="30" value="30" oninput="updateSliderValue()">
+        <input class="w-100"type="range" id="dayRange" min="30" max="300" step="30" value="30" oninput="updateSliderValue()">
         <p>Selected Days: <span id="sliderValue">30</span></p>
       
         <div class="row g-3 mt-0 p-2" id="event-container">
@@ -112,7 +79,7 @@
             // If day data exists, display it; otherwise, display a placeholder
             if (dayData) {
               card.innerHTML = `
-                <b>${dayData.day} | ${dayData.date}</b>
+                <b>Day ${dayData.day} | ${dayData.date}</b>
                 <hr>
                 ${dayData.events.map(event => `<p>${event}</p>`).join('')}
               `;
