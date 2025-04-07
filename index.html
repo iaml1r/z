@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,31 +5,65 @@
   <title>L1R - Developer & Entrepreneur</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #f1f1f1;
       margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eaeaea;
+      color: #222;
       padding: 2rem;
-      line-height: 1.6;
     }
-    h1, h2 {
-      color: #00ffc8;
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
     }
+
     .tagline {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 3rem;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li::before {
-      content: "🔹 ";
-      color: #00ffc8;
-    }
+
     section {
+      max-width: 900px;
+      margin: auto;
       margin-bottom: 2rem;
+    }
+
+    .skills h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    .skills li {
+      margin-bottom: 0.5rem;
+    }
+
+    .projects h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+      text-align: center;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -39,9 +72,8 @@
   <h1>L1R</h1>
   <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
 
-  <section>
-    <h2>About Me</h2>
-    <p>I’m a great developer and entrepreneur. 🔨 I can build:</p>
+  <section class="skills">
+    <h2>🔨 I can build</h2>
     <ul>
       <li>Android Apps</li>
       <li>Games</li>
@@ -52,26 +84,25 @@
     </ul>
   </section>
 
-  <section>
-    <h2>Projects</h2>
+  <section class="projects">
     <h3>Completed / Updating</h3>
-    <ul>
-      <li>Ball-Ring Escape – Anti-Anxiety / Depression Game</li>
-    </ul>
+    <div class="card-container">
+      <div class="card">Hand AI</div>
+      <div class="card">GyroX - Rotation Gesture App</div>
+      <div class="card">Weird but Simple Alarm App</div>
+    </div>
 
-    <h3>Currently Working On</h3>
-    <ul>
-      <li>Android Face Control</li>
-      <li>Android Gesture Control</li>
-      <li>Batman Bike AKA BatPod</li>
-      <li>Iron-Man Suit</li>
-      <li>Spider-Man Web-Shooters</li>
-      <li>Short Film Made with AI</li>
-    </ul>
+    <h3>Currently Working on</h3>
+    <div class="card-container">
+      <div class="card">Ball-Ring Escape</div>
+      <div class="card">Android Face Control</div>
+      <div class="card">Android Gesture Control</div>
+      <div class="card">Batman Bike AKA BatPod</div>
+      <div class="card">Iron-Man Suit</div>
+      <div class="card">Spider-Man Web-Shooters</div>
+      <div class="card">Short Film Made with AI</div>
+    </div>
   </section>
 
 </body>
 </html>
-```
-
-Want it to be mobile-friendly or styled more like a modern portfolio site? I can upgrade it with some animations, cards, or even dark/light mode toggles if you’d like.
