@@ -1,0 +1,44 @@
+[
+    {
+      "day": 1,
+      "date": "April 4, 2025",
+      "events": [
+        "Created new site for Lvs1R",
+        "Home Page",
+        "Created this JSON feature"
+      ]
+    },
+    {
+      "day": 2,
+      "date": "April 5, 2025",
+      "events": [
+        "Started working on the About Us page",
+        "Designed initial layout"
+      ]
+    },
+    {
+      "day": 3,
+      "date": "April 6, 2025",
+      "events": [
+        "Implemented homepage functionality",
+        "Set up server hosting"
+      ]
+    },
+    {
+      "day": 4,
+      "date": "April 7, 2025",
+      "events": [
+        "Added footer section",
+        "Created contact form"
+      ]
+    },
+    {
+      "day": 5,
+      "date": "April 8, 2025",
+      "events": [
+        "Tested homepage responsiveness",
+        "Fixed bugs in contact form"
+      ]
+    }
+  ]
+  
