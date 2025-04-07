@@ -1,150 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>L1R - Developer & Entrepreneur</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L1R - Developer & Builder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e1e;
-      color: #f0f0f0;
-      padding: 2rem;
+      color: #f8f9fa;
     }
-
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 0.3rem;
-      color: #ffffff;
-    }
-
-    .tagline {
-      text-align: center;
-      font-weight: bold;
-      color: #bbbbbb;
-      margin-bottom: 2.5rem;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: auto;
-      margin-bottom: 2rem;
-      padding: 0 1rem;
-    }
-
-    .skills h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: #f5f5f5;
-    }
-
-    .skills ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
-    }
-
-    .skills li {
-      margin-bottom: 0.5rem;
-      color: #dcdcdc;
-      font-size: 0.95rem;
-    }
-
-    .projects h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #f5f5f5;
-      font-size: 1.1rem;
-    }
-
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
     .card {
-      background: #2a2a2a;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      text-align: center;
-      font-weight: 500;
-      color: #f0f0f0;
-      flex: 1 1 200px;
-      max-width: 300px;
+      background-color: #2c2c2c;
+      border: none;
+      color: #fff;
       transition: transform 0.2s ease;
     }
-
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
     }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1.5rem 1rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .tagline {
-        font-size: 0.85rem;
-      }
-
-      .card {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
+    h1, h2 {
+      text-align: center;
+    }
+    .tagline {
+      text-align: center;
+      color: #b0b0b0;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
     }
   </style>
 </head>
-<body>
+<body class="py-5">
 
-  <h1>L1R</h1>
-  <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
+  <div class="container">
+    <h1>L1R</h1>
+    <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
 
-  <section class="skills">
-    <h2>🔨 I can build</h2>
-    <ul>
-      <li>Android Apps</li>
-      <li>Games</li>
-      <li>Virtual Reality / Augmented Reality Applications</li>
-      <li>Full-Stack Websites</li>
-      <li>IoT stuff (Arduino, ESP32)</li>
-      <li>AI stuff</li>
-    </ul>
-  </section>
+    <section class="mb-5">
+      <h2>🔨 I can build</h2>
+      <ul class="list-group list-group-flush text-light bg-transparent">
+        <li class="list-group-item bg-transparent text-light">Android Apps</li>
+        <li class="list-group-item bg-transparent text-light">Games</li>
+        <li class="list-group-item bg-transparent text-light">Virtual Reality / Augmented Reality Applications</li>
+        <li class="list-group-item bg-transparent text-light">Full-Stack Websites</li>
+        <li class="list-group-item bg-transparent text-light">IoT stuff (Arduino, ESP32)</li>
+        <li class="list-group-item bg-transparent text-light">AI stuff</li>
+      </ul>
+    </section>
 
-  <section class="projects">
-    <h3>Completed / Updating</h3>
-    <div class="card-container">
-      <div class="card">Hand AI</div>
-      <div class="card">GyroX - Rotation Gesture App</div>
-      <div class="card">Weird but Simple Alarm App</div>
-    </div>
+    <section class="mb-5">
+      <h2>Completed / Updating</h2>
+      <div class="row g-3 mt-3">
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Hand AI</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">GyroX - Rotation Gesture App</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Weird but Simple Alarm App</div>
+        </div>
+      </div>
+    </section>
 
-    <h3>Currently Working on</h3>
-    <div class="card-container">
-      <div class="card">Ball-Ring Escape</div>
-      <div class="card">Android Face Control</div>
-      <div class="card">Android Gesture Control</div>
-      <div class="card">Batman Bike AKA BatPod</div>
-      <div class="card">Iron-Man Suit</div>
-      <div class="card">Spider-Man Web-Shooters</div>
-      <div class="card">Short Film Made with AI</div>
-    </div>
-  </section>
+    <section>
+      <h2>Currently Working on</h2>
+      <div class="row g-3 mt-3">
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Ball-Ring Escape</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Android Face Control</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Android Gesture Control</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Batman Bike AKA BatPod</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Iron-Man Suit</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Spider-Man Web-Shooters</div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 text-center">Short Film Made with AI</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
