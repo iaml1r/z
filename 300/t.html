@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L1R - Developer & Builder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/styles.css" rel="stylesheet" />
+</head>
+<body class="py-5">
+  <div class="container">
+    <h1>L1R</h1>
+    <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
+
+    <section class="mb-3">
+      <div class="row g-3 mt-0 p-2">
+        <b onclick="window.location.href='../';" type="button" class="card m-1 p-2 text-center g-3 w-auto">🏠 Home</b>
+        <b onclick="window.location.href='300';" type="button" class="card m-1 p-2 text-center g-3 w-auto">💪 Progress</b>
+      </div>
+    </section>
+
+    <hr class="hr" />
+
+    <section class="mb-3">
+      <h3>Day Range</h3>
+      <input class="w-100"type="range" id="dayRange" min="30" max="300" step="30" value="30" oninput="updateSliderValue()">
+      <p>Selected Days: <span id="sliderValue">30</span></p>
+      <div class="row g-3 mt-0 p-2" id="event-container"></div>
+    </section>
+  </div>
+
+  <script>
+    const sheetId = "1fsYrnzfY6gPJ_XpWL4wQ5KgHZjYRpwuNs-H3doOMAyY";
+    const gid = "0";
+    const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?gid=${gid}&tq=Select%20*`;
+
+    function updateSliderValue() {
+      const slider = document.getElementById("dayRange");
+      const value = slider.value;
+      document.getElementById("sliderValue").textContent = value;
+      loadEvents(Number(value));
+    }
+
+    function loadEvents(dayRange) {
+      fetch(sheetUrl)
+        .then(res => res.text())
+        .then(rep => {
+          const json = JSON.parse(rep.substring(47).slice(0, -2));
+          const rows = json.table.rows;
+
+          const data = rows.map((row, index) => ({
+            day: index + 1,
+            date: row.c[0] ? row.c[1].v : "",
+            events: row.c[2] ? row.c[2].v.split(/[,;]/) : ["No events listed"]
+          }));
+
+          const container = document.getElementById("event-container");
+          container.innerHTML = "";
+
+          const startDay = Math.max(1, dayRange - 29);
+          const endDay = dayRange;
+
+          for (let i = startDay; i <= endDay; i++) {
+            const dayData = data.find(d => d.day === i);
+            const col = document.createElement("div");
+            col.className = "col-md-4";
+
+            const card = document.createElement("div");
+            card.className = "card p-3 text-start";
+
+            if (dayData) {
+              card.innerHTML = `
+                <b>Day ${dayData.day} | ${dayData.date}</b>
+                <hr>
+                ${dayData.events.map(event => `<p>${event.trim()}</p>`).join("")}
+              `;
+            } else {
+              card.innerHTML = `
+                <b>Day ${i}</b>
+                <hr>
+                <p>No data available</p>
+              `;
+            }
+
+            col.appendChild(card);
+            container.appendChild(col);
+          }
+        })
+        .catch(err => {
+          console.error("Failed to fetch Google Sheet:", err);
+        });
+    }
+
+    window.onload = () => {
+      loadEvents(30);
+    };
+  </script>
+</body>
+</html>
