@@ -1,87 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>L1R - Developer & Builder</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link to the external CSS file -->
-    <link href="../assets/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/styles.css" rel="stylesheet" />
 </head>
 <body class="py-5">
-
   <div class="container">
     <h1>L1R</h1>
     <div class="tagline">APPS - GAMES - WEB - VR - AR - IOT - AI</div>
 
-
     <section class="mb-3">
       <div class="row g-3 mt-0 p-2">
-        <b onclick="window.location.href='../';" type="button" class="card  m-1 p-2 text-center g-3 w-auto " >🏠 Home</b>
-        <b onclick="window.location.href='300';" type="button" class="card  m-1 p-2 text-center g-3 w-auto " >💪 Progress</b>
-
-      
+        <b onclick="window.location.href='../';" type="button" class="card m-1 p-2 text-center g-3 w-auto">🏠 Home</b>
+        <b onclick="window.location.href='300';" type="button" class="card m-1 p-2 text-center g-3 w-auto">💪 Progress</b>
       </div>
     </section>
+
     <hr class="hr" />
 
     <section class="mb-3">
-        <h3>Day Range</h3>
-        
-        <!-- Slider for selecting the day range -->
-        <input class="w-100"type="range" id="dayRange" min="30" max="300" step="30" value="30" oninput="updateSliderValue()">
-        <p>Selected Days: <span id="sliderValue">30</span></p>
-      
-        <div class="row g-3 mt-0 p-2" id="event-container">
-          <!-- Events will be dynamically added here -->
-        </div>
-      </section>
-      
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+      <h3>Day Range</h3>
+      <input class="w-100"type="range" id="dayRange" min="30" max="300" step="30" value="30" oninput="updateSliderValue()">
+      <p>Selected Days: <span id="sliderValue">30</span></p>
+      <div class="row g-3 mt-0 p-2" id="event-container"></div>
+    </section>
   </div>
 
-
   <script>
-    // Update the slider value text on the page
+    const sheetId = "1fsYrnzfY6gPJ_XpWL4wQ5KgHZjYRpwuNs-H3doOMAyY";
+    const gid = "0";
+    const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?gid=${gid}&tq=Select%20*`;
+
     function updateSliderValue() {
-      const slider = document.getElementById('dayRange');
+      const slider = document.getElementById("dayRange");
       const value = slider.value;
-      document.getElementById('sliderValue').textContent = value;
-      loadEvents(value); // Call function to load events based on slider value
+      document.getElementById("sliderValue").textContent = value;
+      loadEvents(Number(value));
     }
-  
-    // Function to load events based on the day range selected
+
     function loadEvents(dayRange) {
-      fetch('300j.json', {
-      method: 'GET',
-      cache: 'no-store'  // Ensures that the request doesn't use the cache and always fetches fresh data
-    })  // Assuming the JSON file is in the same folder
-        .then(response => response.json())  // Parse the JSON response
-        .then(data => {
-          const container = document.getElementById('event-container');
-          container.innerHTML = ''; // Clear existing content before rendering new events
-  
-          // Calculate the range of days to fetch based on slider value
-          const startDay = dayRange - 29;  // Subtract 29 so that we always start from the first day of the range
+      fetch(sheetUrl)
+        .then(res => res.text())
+        .then(rep => {
+          const json = JSON.parse(rep.substring(47).slice(0, -2));
+          const rows = json.table.rows;
+
+          const data = rows.map((row, index) => ({
+            day: index + 1,
+            date: row.c[0] ? row.c[1].v : "",
+            events: row.c[2] ? row.c[2].v.split(/[,;]/) : ["No events listed"]
+          }));
+
+          const container = document.getElementById("event-container");
+          container.innerHTML = "";
+
+          const startDay = Math.max(1, dayRange - 29);
           const endDay = dayRange;
-  
-          // Loop through each day in the selected range
+
           for (let i = startDay; i <= endDay; i++) {
-            const dayData = data.find(day => day.day === i);
-  
-            const col = document.createElement('div');
-            col.classList.add('col-md-4');
-  
-            const card = document.createElement('div');
-            card.classList.add('card', 'p-3', 'text-start');
-  
-            // If day data exists, display it; otherwise, display a placeholder
+            const dayData = data.find(d => d.day === i);
+            const col = document.createElement("div");
+            col.className = "col-md-4";
+
+            const card = document.createElement("div");
+            card.className = "card p-3 text-start";
+
             if (dayData) {
               card.innerHTML = `
                 <b>Day ${dayData.day} | ${dayData.date}</b>
                 <hr>
-                ${dayData.events.map(event => `<p>${event}</p>`).join('')}
+                ${dayData.events.map(event => `<p>${event.trim()}</p>`).join("")}
               `;
             } else {
               card.innerHTML = `
@@ -90,22 +81,19 @@
                 <p>No data available</p>
               `;
             }
-  
+
             col.appendChild(card);
             container.appendChild(col);
           }
         })
-        .catch(error => {
-          console.error('Error loading JSON:', error);
+        .catch(err => {
+          console.error("Failed to fetch Google Sheet:", err);
         });
     }
-  
-    // Initial load of events (set to Day 1 - 30 by default)
+
     window.onload = () => {
-      loadEvents(30); // Default to the first range (1 to 30)
+      loadEvents(30);
     };
   </script>
-  
-  
 </body>
 </html>
